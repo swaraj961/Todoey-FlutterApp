@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
 body: Stack(
   alignment: Alignment.center,
+  overflow: Overflow.visible,
   children: <Widget>[
     Container(//image here 
 
@@ -66,6 +67,19 @@ DraggableScrollableSheet(
          itemCount: 20,
           ),
       ),
+       
+       Positioned(child:FloatingActionButton(onPressed: 
+       (){},
+       child: Icon(Icons.add,color: Colors.white,
+       ),
+       backgroundColor: Colors.pinkAccent,
+) ,
+left: 300,
+top: 2,
+
+
+
+       ),
           ],
     ); 
   }
