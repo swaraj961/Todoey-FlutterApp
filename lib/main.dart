@@ -1,92 +1,100 @@
 import 'package:flutter/material.dart';
-void main ()=> runApp(new MyApp());
+import 'package:todoapp/tasklist.dart';
+
+void main() => runApp(new MyApp());
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       theme: ThemeData(
-      primarySwatch: Colors.purple,
-      scaffoldBackgroundColor: Colors.purple[600],
-
-
+        primarySwatch: Colors.purple,
+        scaffoldBackgroundColor: Colors.purple[600],
       ),
       home: HomePage(),
-    
     );
-    
   }
 }
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-body: Stack(
-  alignment: Alignment.center,
-  overflow: Overflow.visible,
-  children: <Widget>[
-    Container(//image here 
-
-      width:400,
-      height:600,
-child: Image.asset("assets/image.png",fit: BoxFit.contain,),
-    ),
-  Positioned( // for text at position
-    
-    child: Text("Todos",
-    style: TextStyle(color:Colors.white,fontSize:40,fontStyle: FontStyle.normal ,fontWeight: FontWeight.bold),
-    ),
-    top: 50,
-    left: 20,
-    ),
-DraggableScrollableSheet(
-  maxChildSize: 0.85, //make it scrollable 
-  builder:(BuildContext context, ScrollController scollcontroller){ // to build content and scrollable
-    return Stack(
-          children:<Widget>[
- Container(  
-        // for the scroll sheet look
-        decoration:BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(topRight:Radius.circular(40),topLeft: Radius.circular(40)),
-        ),
-        child: ListView.builder(
-          itemBuilder:(context ,index) //index way to identify task
-           {
-
-            return ListTile(
-              title: Text("Task No $index",style: TextStyle(color:Colors.grey[900],fontWeight: FontWeight.bold),),
-              subtitle: Text("This is the details of your Task No $index",style: TextStyle(color:Colors.grey[900]),) ,
-              trailing: Icon(Icons.check_circle,color:Colors.greenAccent), //just to display anything after text
-              isThreeLine: true,
-
-            );
-          
-          },
-         controller: scollcontroller,
-         itemCount: 20,
+      body: Stack(
+        alignment: Alignment.center,
+        overflow: Overflow.visible,
+        children: <Widget>[
+          Container(
+            width: 400,
+            height: 600,
+            child: Image.asset(
+              "assets/image.png",
+              fit: BoxFit.contain,
+            ),
           ),
+          Positioned(
+            child: Text(
+              "Todoey",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.bold),
+            ),
+            top: 50,
+            left: 20,
+          ),
+          Positioned(
+            child: Icon(
+              Icons.list,
+              size: 50,
+              color: Colors.white,
+            ),
+            left: 30,
+            top: 90,
+          ),
+          DraggableScrollableSheet(
+            maxChildSize: 0.85, //make it scrollable
+            builder: (context, ScrollController scollcontroller) {
+              // to build content and scrollable
+              return Stack(
+                children: <Widget>[
+                  Container(
+                    // for the scroll sheet look
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(40),
+                          topLeft: Radius.circular(40)),
+                    ),
+                    child: ListView.builder(
+                      itemBuilder: (context, index) //index way to identify task
+                          {
+                        return Tasklist();
+                      },
+                      controller: scollcontroller,
+                      itemCount: 20,
+                    ),
+                  ),
+                  Positioned(
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                      backgroundColor: Colors.pinkAccent,
+                    ),
+                    left: 300,
+                    top: 2,
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
       ),
-       
-       Positioned(child:FloatingActionButton(onPressed: 
-       (){},
-       child: Icon(Icons.add,color: Colors.white,
-       ),
-       backgroundColor: Colors.pinkAccent,
-) ,
-left: 300,
-top: 2,
-
-
-
-       ),
-          ],
-    ); 
-  }
-),
-          
-  ],
-),
-);
+    );
   }
 }
