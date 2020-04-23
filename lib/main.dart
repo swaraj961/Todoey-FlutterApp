@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/screen/add_task.dart';
 import 'package:todoapp/tasklist.dart';
 
 void main() => runApp(new MyApp());
@@ -79,7 +80,17 @@ class HomePage extends StatelessWidget {
                   ),
                   Positioned(
                     child: FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(25.0),
+                            ),
+                          ),
+                          context: context,
+                          builder: (context) => Addtask(),
+                        );
+                      },
                       child: Icon(
                         Icons.add,
                         color: Colors.white,

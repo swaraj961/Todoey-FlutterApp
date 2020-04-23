@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:circular_check_box/circular_check_box.dart';
-   bool checkvalue = false;
+
+bool checkvalue = false;
+
 class Tasklist extends StatefulWidget {
   @override
   _TasklistState createState() => _TasklistState();
@@ -9,7 +11,6 @@ class Tasklist extends StatefulWidget {
 class _TasklistState extends State<Tasklist> {
   @override
   Widget build(BuildContext context) {
- 
     return ListTile(
       isThreeLine: true, //maintains space between tiles
       title: Text(
@@ -24,13 +25,10 @@ class _TasklistState extends State<Tasklist> {
         value: checkvalue,
         onChanged: (ontap) {
           setState(() {
-             checkvalue = ontap;
+            checkvalue = ontap;
           });
-         
         },
-        
-        activeColor: Colors.blueAccent,
-        
+        activeColor: Colors.greenAccent,
       ),
     );
   }
