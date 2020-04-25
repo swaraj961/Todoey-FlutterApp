@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/screen/add_task.dart';
-import 'package:todoapp/tasklist.dart';
+import 'package:todoapp/model/task.dart';
+import 'package:todoapp/list_tiles.dart';
 
 void main() => runApp(new MyApp());
 
@@ -19,6 +20,12 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final List<Task> tasks = [
+    Task(tasktitle: 'go to gym '),
+    Task(tasktitle: 'do homework '),
+    Task(tasktitle: 'buy milk '),
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,13 +76,9 @@ class HomePage extends StatelessWidget {
                           topRight: Radius.circular(40),
                           topLeft: Radius.circular(40)),
                     ),
-                    child: ListView.builder(
-                      itemBuilder: (context, index) //index way to identify task
-                          {
-                        return Tasklist();
-                      },
+                    child: Listtiles(
+                      tasks: tasks,
                       controller: scollcontroller,
-                      itemCount: 20,
                     ),
                   ),
                   Positioned(
@@ -109,3 +112,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
