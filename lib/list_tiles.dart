@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/model/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/model/taskdata.dart';
 import 'package:todoapp/tasklist.dart';
+
 class Listtiles extends StatelessWidget {
-  const Listtiles({@required this.tasks, this.controller});
+  const Listtiles({@required this.controller});
   final ScrollController controller;
-  final List<Task> tasks;
+  
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context , index){
-        return Tasklist(
-          taskname: tasks[index].tasktitle,
-          checkvalue: tasks[index].isdone,
-        );
-      },
-itemCount: tasks.length,
+    return Consumer<TaskData>(
+      builder: (context,taskObject , child) => ListView.builder(
+        itemBuilder: (context , index){
+          return Tasklist(
+            taskname:taskObject.tasks[index].tasktitle,
+            checkvalue: taskObject.tasks[index].isdone,
+          );
+        },
+itemCount: taskObject.tasks.length,
 controller: controller,
-      );
+        ),
+    );
   }
 }

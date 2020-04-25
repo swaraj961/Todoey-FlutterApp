@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:todoapp/model/task.dart';
 class Addtask extends StatelessWidget {
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +39,9 @@ class Addtask extends StatelessWidget {
                 'ADD',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
-              onPressed: null,
+              onPressed: (){
+                
+              },
             ),
           )
         ],

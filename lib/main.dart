@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/model/taskdata.dart';
 import 'package:todoapp/screen/add_task.dart';
-import 'package:todoapp/model/task.dart';
+
 import 'package:todoapp/list_tiles.dart';
+
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        scaffoldBackgroundColor: Colors.purple[600],
-      ),
-      home: HomePage(),
+    return ChangeNotifierProvider(
+          child: MaterialApp(
+        // debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          scaffoldBackgroundColor: Colors.purple[600],
+        ),
+        home: HomePage(),
+      ), create: (BuildContext context) => TaskData(), //data to all the other notifier
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  final List<Task> tasks = [
-    Task(tasktitle: 'go to gym '),
-    Task(tasktitle: 'do homework '),
-    Task(tasktitle: 'buy milk '),
-
-  ];
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,8 +77,8 @@ class HomePage extends StatelessWidget {
                           topLeft: Radius.circular(40)),
                     ),
                     child: Listtiles(
-                      tasks: tasks,
-                      controller: scollcontroller,
+                     
+                    controller: scollcontroller,
                     ),
                   ),
                   Positioned(

@@ -6,7 +6,10 @@ import 'package:circular_check_box/circular_check_box.dart';
 class Tasklist extends StatelessWidget {
 final bool checkvalue ;
 final String taskname ;
-Tasklist({this.checkvalue,this.taskname});
+final Function callback;
+Tasklist({this.checkvalue,this.taskname,this.callback});
+
+
   
   @override
   Widget build(BuildContext context) {
@@ -18,11 +21,11 @@ Tasklist({this.checkvalue,this.taskname});
       ),
       subtitle: Text(
         taskname,
-        style: TextStyle(color: Colors.grey[900]),
+        style: checkvalue ? TextStyle(color: Colors.grey[900] ,decoration:  TextDecoration.lineThrough) :TextStyle(color: Colors.grey[900],decoration:null)
       ),
       trailing: CircularCheckBox(
-        value: false,
-        onChanged:null
+        value: checkvalue,
+        onChanged:callback
       ),
     );
   }
