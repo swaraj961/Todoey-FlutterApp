@@ -29,7 +29,8 @@ class Tasklist extends StatelessWidget {
                   color: Colors.grey[900],
                   decoration: TextDecoration.lineThrough)
               : TextStyle(color: Colors.grey[900], decoration: null)),
-      trailing: CircularCheckBox(value: checkvalue, onChanged: callback),
+      trailing: CircularCheckBox(value: checkvalue, onChanged: callback,
+      activeColor: Colors.greenAccent,),
     );
   }
 }
