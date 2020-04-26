@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/model/task.dart';
+
+import 'package:todoapp/model/taskdata.dart';
+import 'package:provider/provider.dart';
+
+String newtasktittle;
+
 class Addtask extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,6 +27,9 @@ class Addtask extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(40),
             child: TextFormField(
+              onChanged: (taskname) {
+                newtasktittle = taskname;
+              },
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: 'Enter your Task',
@@ -39,8 +46,10 @@ class Addtask extends StatelessWidget {
                 'ADD',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
-              onPressed: (){
-                
+              onPressed: () {
+                Provider.of<TaskData>(context, listen: false)
+                    .addtask(newtasktittle);
+                Navigator.pop(context);
               },
             ),
           )
