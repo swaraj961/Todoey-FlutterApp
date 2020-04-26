@@ -15,6 +15,7 @@ class Listtiles extends StatelessWidget {
           return Tasklist(
               taskname: taskObject.tasks[index].tasktitle,
               checkvalue: taskObject.tasks[index].isdone,
+              indextask: index,
               callback: (taskstate) {
                 taskObject.updatetask(taskObject.tasks[index]);
               });

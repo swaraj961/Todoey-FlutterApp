@@ -8,7 +8,8 @@ class Tasklist extends StatelessWidget {
 final bool checkvalue ;
 final String taskname ;
 final Function callback;
-Tasklist({this.checkvalue,this.taskname,this.callback});
+final int indextask ;
+Tasklist({this.checkvalue,this.taskname,this.callback,this.indextask});
 
 
   
@@ -17,7 +18,7 @@ Tasklist({this.checkvalue,this.taskname,this.callback});
     return ListTile(
       isThreeLine: true, //maintains space between tiles
       title: Text(
-        "Task No ",
+        "Task No $indextask  ",
         style: TextStyle(color: Colors.grey[900], fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
