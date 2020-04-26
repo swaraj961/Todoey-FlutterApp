@@ -6,7 +6,7 @@
 -longpress to delete the task
 
 ## Download apk 
--link will be added soon !
+- https://www.shorturl.at/nyBDK
 
 # App UI 
 ![Finished App](https://github.com/swaraj961/Todoey-FlutterApp/blob/master/assets/GIF-200426_074844.gif)
